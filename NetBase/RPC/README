@@ -1,0 +1,17 @@
+'''
+远程调用
+
+PRC 协议
+开头：4字节整形，保存后续数据长度
+请求序列化的字典: { 'msgtype':msgtype, 'key':key, 'name':name, 'args':args,'kw':kw }
+返回序列化的字典: { 'msgtype':msgtype, 'key':key, 'result':result, 'error':error }
+msgtype 消息类型:'ASK' 请求结果，需要回调
+                'NOTICE' 仅通知，不返回
+                'ANSWER' 返回结果
+                'KEEPLIVE' 心跳保持 客户端发起
+                'REKEEPLIVE' 心跳保持回复 服务端回复
+
+key 自身的远程调用回调字典键值，远程调用需要原样返回
+name 远程调用方法名称
+args kw 远程调用方法参数
+'''
