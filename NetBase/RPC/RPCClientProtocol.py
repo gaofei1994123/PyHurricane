@@ -54,7 +54,7 @@ class RPCClientProtocol(RPCBaseProtocol):
         data = marshal.dumps({'msgtype': RPCEnum.REGISTER, 'name': self.__name})
         self.transport.sendall(struct.pack("!i", data.__len__()) + data)
         if self.__serverConnectHandler is not None:
-            self.__serverConnectHandler
+            self.__serverConnectHandler()
 
         # 关闭回调
     def connectionLost(self, transport, reason):
